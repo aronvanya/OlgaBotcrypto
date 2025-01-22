@@ -17,12 +17,13 @@ target_channel_id = int(os.getenv("TARGET_CHANNEL_ID"))  # Целевая гру
 # ID разделов, которые нужно пересылать
 allowed_topics = [3, 5, 6, 976, 1986, 736]  # Указанные ID разделов
 
+# Обработчик новых сообщений
 @client.on(events.NewMessage(chats=source_channel_id))
 async def handler(event):
     message = event.message
     reply_to = message.reply_to
 
-    # Проверяем, есть ли привязка к теме
+    # Проверяем наличие привязки к разделу
     if reply_to and reply_to.reply_to_top_id:
         topic_id = reply_to.reply_to_top_id
         if topic_id in allowed_topics:
