@@ -1,6 +1,4 @@
-# Исключаем файл сессии
+*.pyc
+__pycache__/
 *.session
 *.session-journal
-
-# Личные данные
-.env
